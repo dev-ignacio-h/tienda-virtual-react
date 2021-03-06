@@ -6,12 +6,15 @@ import Producto from './components/Producto'
 
 function App() {
   // Crear listado de productos
-  const [productos, setProductos] = useState([
+  const [productos, agregarProductos] = useState([
     { id: 1, nombre: 'Camisa ReactJS', precio: 50 },
     { id: 2, nombre: 'Camisa VueJS', precio: 40 },
     { id: 3, nombre: 'Camisa Node.js', precio: 30 },
     { id: 4, nombre: 'Camisa Angular', precio: 20 },
   ]);
+
+  // State para un carrito de compras
+  const [carrito, agregarProducto] = useState([])
   return (
     <>
       <Header
@@ -23,6 +26,9 @@ function App() {
         <Producto 
           key={producto.id}
           producto={producto}
+          carrito={carrito}
+          agregarProducto={agregarProducto}
+          productos={productos}
         />
       ))}
       <Footer
