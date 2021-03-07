@@ -1,8 +1,9 @@
-import { useState } from 'react'
+import { useState } from 'react';
 
-import Header from './components/Header'
-import Footer from './components/Footer'
-import Producto from './components/Producto'
+import Header from './components/Header';
+import Footer from './components/Footer';
+import Producto from './components/Producto';
+import Carrito from './components/Carrito';
 
 function App() {
   // Crear listado de productos
@@ -14,16 +15,14 @@ function App() {
   ]);
 
   // State para un carrito de compras
-  const [carrito, agregarProducto] = useState([])
+  const [carrito, agregarProducto] = useState([]);
   return (
     <>
-      <Header
-        titulo={'Tienda Virtual'}
-      />
+      <Header titulo={'Tienda Virtual'} />
 
       <h1>Lista de Productos</h1>
       {productos.map(producto => (
-        <Producto 
+        <Producto
           key={producto.id}
           producto={producto}
           carrito={carrito}
@@ -31,9 +30,8 @@ function App() {
           productos={productos}
         />
       ))}
-      <Footer
-        fecha={fecha}
-      />
+      <Carrito carrito={carrito} agregarProducto={agregarProducto} />
+      <Footer fecha={fecha} />
     </>
   );
 }
